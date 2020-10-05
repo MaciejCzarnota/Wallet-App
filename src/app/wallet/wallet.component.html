@@ -1,0 +1,34 @@
+<div *ngIf="isChanged">
+    <app-message [message]="message"></app-message>
+</div>
+<h2 *ngIf="id; else newWallet">Wallet {{ id }}</h2>
+<ng-template #newWallet>
+    <h2>New wallet</h2>
+</ng-template>
+
+<form [formGroup]="walletForm" (ngSubmit)="sendData()">
+    <label>
+        Name:
+    </label><br/>
+    <input formControlName="walletname" type="text" placeholder="Name" [class.inputwarning]="walletname.errors?.required && isClicked"><br/>
+    <div *ngIf="walletname.errors?.required && isClicked" class="warnings">
+        This field must not be empty.
+    </div>
+    <label>
+        Amount:
+    </label><br />
+    <input formControlName="amount" type="number" placeholder="Amount" [class.inputwarning]="amount.errors?.required && isClicked"><br/>
+    <div *ngIf="amount.errors?.required && isClicked" class="warnings">
+        This field must not be empty.
+    </div>
+    <label>
+        Currency:
+    </label><br />
+    <select formControlName="currency" [class.inputwarning]="currency.errors?.required && isClicked">
+        <option *ngFor="let currency of currencies" value="{{currency.id}}" >{{currency.code}} - {{currency.name}}</option>
+    </select><br/>
+    <div *ngIf="currency.errors?.required && isClicked" class="warnings">
+        This field must not be empty.
+    </div>
+    <button type="submit">Submit</button>
+</form>

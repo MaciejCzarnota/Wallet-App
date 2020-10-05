@@ -1,0 +1,21 @@
+<header>
+    <div id="header-logo">
+        <a routerLink="/" style="text-decoration: none;"><span class="header-text"><b>WalletApp</b></span></a>
+    </div>
+    <div class="right-buttons">
+        <div *ngIf="isLogged; else userUnauthorized" id="right-buttons-content">
+            <span id="logged-text">You are logged in as: <b>{{username}}</b></span>
+            <button (click)="logout()">Log Out</button>
+        </div>
+        <ng-template #userUnauthorized>
+            <div id="right-buttons-content">
+                <a routerLink="/login">
+                    <button>Sign In</button>
+                </a>
+                <a routerLink="/register">
+                    <button>Sign Up</button>
+                </a>
+            </div>
+        </ng-template>
+    </div>
+</header>

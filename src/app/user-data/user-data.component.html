@@ -1,0 +1,36 @@
+<div *ngIf="isSuccessful">
+    <app-message [message]="messages[0]"></app-message>
+</div>
+<div *ngIf="!isSuccessful && isClicked && !isChanged">
+    <app-message [message]="messages[1]"></app-message>
+</div>
+<div *ngIf="!isSuccessful && isClicked && isChanged">
+    <app-message [message]="messages[2]"></app-message>
+</div>
+<h2>User Data</h2>
+
+<form [formGroup]="userDataForm" (ngSubmit)="sendData()">
+    <label>
+        First name:
+    </label><br/>
+    <input type="text" formControlName="first_name" placeholder="First Name"><br/>
+    <label>
+        Last name:
+    </label><br/>
+    <input type="text" formControlName="last_name" placeholder="Last Name"><br/>
+    <label>
+        Email:
+    </label><br/>
+    <input type="text" formControlName="email" placeholder="Email"><br/>
+    <label>
+        Phone Number:
+    </label><br/>  
+    <input type="text" formControlName="phone_number" placeholder="Phone Number"><br/>
+    <label>
+        Country:
+    </label><br/>
+    <select formControlName="country_id">
+        <option *ngFor="let country of countries" value="{{country.id}}" >{{country.name}}</option>
+    </select><br/>
+    <button type="submit">Send data</button>
+</form>

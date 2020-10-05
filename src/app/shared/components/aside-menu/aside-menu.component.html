@@ -1,0 +1,18 @@
+<div *ngIf="isLogged" id="left-side-menu">
+    <div id="user-info">
+        <h2 style="text-align: center;"> {{ username }} </h2>
+    </div>
+    <h3>Wallets</h3>
+    <ul>
+        <li><a href="/walletlist">List of wallets</a></li>
+        <li><a href="/wallet">Create new wallet</a></li>
+    </ul>
+    <h3 style="margin-top: 40px;">User</h3>
+    <ul>
+        <li><a href="/user/history">History</a></li>
+        <li><a href="/user/edit">Edit user data</a></li>
+        <li><a href="/user/passwordchange">Change password</a></li>
+        <li><a href="/user/delete">Delete user</a></li>
+        <li (click)="logout()"><a>Log Out</a></li>
+    </ul>
+</div>

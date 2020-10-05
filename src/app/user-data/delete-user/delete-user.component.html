@@ -1,0 +1,15 @@
+<div *ngIf="wrongPassword">
+    <app-message [message]="message"></app-message>
+</div>
+<h2>Delete user</h2>
+
+<div style="text-align: center;">
+    <p>Enter password to delete user:</p>
+
+    <input type="password" [formControl]="passwordInput"><br/>
+
+    <button type="submit" (click)="delete()">Delete</button><br/>
+
+    <p>Deleting user means that all entered data will be deleted as well. You will not have access to deleted account or data.</p>
+
+</div>

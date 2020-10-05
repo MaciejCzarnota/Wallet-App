@@ -1,0 +1,8 @@
+<div *ngIf="message.display && message.success" id="message" style="background-color: #63E3B0;">
+    <h2 style="margin-top: 0; margin-bottom: 30px;">{{ message.title }}</h2>
+    <p [innerHTML]="message.content"></p>
+</div>
+<div *ngIf="message.display && !message.success" id="message" style="background-color: #F4442E;">
+    <h2 style="margin-top: 0; margin-bottom: 30px;">{{ message.title }}</h2>
+    <p [innerHTML]="message.content"></p>
+</div>

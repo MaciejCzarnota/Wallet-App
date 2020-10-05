@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: ubunturegular;
+    src: url(fonts/Ubuntu-Regular.ttf);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fefefe;
+    font-family: ubunturegular;
+}
+
+form {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+input, select {
+    border-radius: 8px;
+    height: 24px;
+    font-size: 16px;
+    margin: 15px;
+    text-align: center;
+    display: inline-block;
+    max-width: 450px;
+    width: 60%;
+}
+
+button {
+    border-radius: 8px;
+    padding: 6px;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+}
+
+label {
+  margin: auto;
+  text-align: center;
+  display: inline-block;
+}
+
+h2 {
+    float: center;
+    text-align: center;
+    margin-bottom: 25px;
+}

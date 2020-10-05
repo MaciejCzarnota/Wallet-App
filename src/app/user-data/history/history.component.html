@@ -1,0 +1,13 @@
+<h2>History</h2>
+<table>
+    <tr>
+        <th>No.</th>
+        <th>Information</th>
+        <th>Date</th>
+    </tr>
+    <tr *ngFor="let log of historyArray">
+        <td>{{ log.no }}</td>
+        <td>{{ log.information }}</td>
+        <td>{{ log.entryDate }}</td>
+    </tr>
+</table>

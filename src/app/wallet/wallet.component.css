@@ -1,0 +1,10 @@
+.inputwarning {
+    margin-bottom: 0px;
+    border-color: red;
+}
+
+.warnings {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 15px;
+}

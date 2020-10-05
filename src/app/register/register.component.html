@@ -1,0 +1,47 @@
+<h2>Sign up</h2>
+
+<p style="text-align: center; margin-bottom: 40px;">To register new account fill out form below.</p>
+<form [formGroup]="registerForm" (ngSubmit)="createNewUser()">
+    <label>
+        Username:
+    </label><br/>
+    <input formControlName="username" type="login" placeholder="Username"
+        [class.inputwarning]="isConfirmed && (username.errors.required || username.errors.minlength || username.errors.maxlength || !username.errors.usernameValidation || isUsernameUsed)"><br />
+    <div *ngIf="isConfirmed" class="warnings">
+        <div *ngIf="username.errors.required">
+            Field username is not filled.
+        </div>
+        <div *ngIf="username.errors.minlength">
+            Field username must contain minimum 3 characters.
+        </div>
+        <div *ngIf="username.errors.maxlength">
+            Field username must contain maximum 30 characters.
+        </div>
+        <div *ngIf="!username.errors.usernameValidation">
+            Username can only contain alphanumeric values.
+        </div>
+        <div *ngIf="isUsernameUsed">
+            This username is used
+        </div>
+    </div>
+    <label>
+        Password:
+    </label><br/>
+    <input formControlName="password" type="password" placeholder="Password"
+        [class.inputwarning]="isConfirmed && (password.errors.required || password.errors.minlength || password.errors.maxlength || !password.errors.passwordValidation)"><br />
+    <div class="warnings" *ngIf="isConfirmed">
+        <div *ngIf="password.errors.required">
+            Field password is not filled.
+        </div>
+        <div *ngIf="!password.errors.passwordValidation">
+            Password must contain minimum one upper case letter, one lower case letter and one number.
+        </div>
+        <div *ngIf="password.errors.minlength">
+            Password must contain minimum 8 characters.
+        </div>
+        <div *ngIf="password.errors.maxlength">
+            Password must contain maximum 30 characters.
+        </div>
+    </div>
+    <button type="submit">Create new user</button>
+</form>

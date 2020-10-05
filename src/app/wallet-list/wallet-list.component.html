@@ -1,0 +1,55 @@
+<div *ngIf="display[0]">
+    <app-message [message]="messages[0]"></app-message>
+</div>
+<div *ngIf="display[1]">
+    <app-message [message]="messages[1]"></app-message>
+</div>
+<div *ngIf="display[2]">
+    <app-message [message]="messages[2]"></app-message>
+</div>
+<div *ngIf="display[3]">
+    <app-message [message]="messages[3]"></app-message>
+</div>
+<div *ngIf="display[4]">
+    <app-message [message]="messages[4]"></app-message>
+</div>
+<div *ngIf="display[5]">
+    <app-message [message]="messages[5]"></app-message>
+</div>
+<h2>Wallet list</h2>
+<a routerLink="/wallet"><button id="new-wallet">Add new wallet</button></a>
+<div id="wallets-list">
+    <div *ngFor="let wallet of wallets" class="wallet">
+        <h1>{{ wallet.name }}</h1>
+        <div style="display: flex; justify-content: space-between;">
+            <button *ngIf="!wallet.depositDisplay" (click)="depositToggle(wallet.id)">Deposit</button>
+            <div *ngIf="wallet.depositDisplay" class="wallet-function">
+                <div (click)="depositToggle(wallet.id)" class="function-x">X</div>
+                <label>
+                    How many to deposit:
+                </label>
+                <input type="number" [formControl]="wallet.depositControl">
+                <button (click)="deposit(wallet.id, wallet.depositControl, wallet.name)">Deposit</button>
+            </div>
+            <button *ngIf="!wallet.withdrawalDisplay" (click)="withdrawalToggle(wallet.id)" style="float: right">Withdrawal</button>
+            <div *ngIf="wallet.withdrawalDisplay" style="float: right" class="wallet-function">
+                <div (click)="withdrawalToggle(wallet.id)" class="function-x">X</div>
+                <label>
+                    How many to withdraw:
+                </label>
+                <input type="number" [formControl]="wallet.withdrawalControl">
+                <button (click)="withdraw(wallet.id, wallet.amount, wallet.withdrawalControl, wallet.name)">Withdraw</button>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            Amount: {{ wallet.amount + ' ' + wallet.cur }}
+        </div>
+        <a routerLink="/wallet/{{wallet.id}}">
+            <button style="background-color: #BDE4A8;">Edit</button>
+        </a>
+        <button (click)="deleteWallet(wallet.id, wallet.name)" style="float: right;background-color: #F4442E;">Delete</button>
+    </div>
+    <div *ngIf="!wallets.length">
+        This user does not have any created wallets.
+    </div>
+</div>

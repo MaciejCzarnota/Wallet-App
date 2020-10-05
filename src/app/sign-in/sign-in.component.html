@@ -1,0 +1,25 @@
+<div *ngIf="display[0]">
+    <app-message [message]="messages[0]"></app-message>
+</div>
+<div *ngIf="display[1]">
+    <app-message [message]="messages[1]"></app-message>
+</div>
+<div *ngIf="display[2]">
+    <app-message [message]="messages[2]"></app-message>
+</div>
+<div *ngIf="display[3]">
+    <app-message [message]="messages[3]"></app-message>
+</div>
+<h2>Sign In</h2>
+<p style="text-align: center; margin-bottom: 40px;">To sign in to your account fill out form below.</p>
+<form [formGroup]="userLogin" (ngSubmit)="loginAttempt()">
+    <label>
+        Username:
+    </label><br/>
+    <input type="text" formControlName="login" placeholder="Username"><br />
+    <label>
+        Password:
+    </label><br/>
+    <input type="password" formControlName="password" placeholder="Password"><br />
+    <button>Login</button>
+</form>

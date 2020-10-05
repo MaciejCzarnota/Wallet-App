@@ -1,0 +1,65 @@
+header {
+    width: 100%;
+    background: #a5b9bb;
+    z-index: 1;
+}
+
+.header-text {
+    font-size: 28px;
+    line-height: 40px;
+    margin-left: 10px;
+    color: #eee;
+}
+
+.header-text:visited {
+    color: #eee;
+}
+
+#logged-text {
+    padding-right: 10px;
+}
+
+button {
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+    header {
+        height: 80px;
+        position: static;
+    }
+    
+    #header-logo {
+        text-align: center;
+    }
+
+    .header-text {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .right-buttons {
+        clear: both;
+    }
+
+    #right-buttons-content {
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    header {
+        height: 40px;
+        position: fixed;
+        top: 0;
+    }
+
+    .right-buttons {
+        float: right;
+        line-height: 40px;
+    }
+    
+    #header-logo {
+        float: left;
+    }
+  }
