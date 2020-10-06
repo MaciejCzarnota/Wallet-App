@@ -51,25 +51,17 @@ export class UserDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.countriesService.getObs().subscribe(list => {
+    this.countriesService.getCountries().subscribe(list => {
       for (const country of list) {
         this.countries.push({id: country.country_id, name: country.name});
       }
     });
-    this.isLogged();
-  }
-
-  isLogged(): void {
-    if (this.sessionManagerService.getLoggedIn()) {
-      this.userid = this.sessionManagerService.getId();
-      this.getData();
-    }else {
-      this.redirectManagerService.redirectIfNotLoggedIn();
-    }
+    this.redirectManagerService.redirectIfNotLoggedIn();
+    this.getData();
   }
 
   getData(): void {
-    this.userDataService.getUserData({userid: this.userid}).subscribe(
+    this.userDataService.getUserData({userid: this.sessionManagerService.getId()}).subscribe(
       data => {
         if (data.isFound) {
           this.userData.firstname = data.first_name;
@@ -90,16 +82,16 @@ export class UserDataComponent implements OnInit {
   }
 
   sendData(): void {
-    const user = {
-      userid: this.userid,
-      first_name: this.first_name.value,
-      last_name: this.last_name.value,
-      email: this.email.value,
-      phone_number: this.phone_number.value,
-      country_id: this.country_id.value
-    };
     this.isChanged = this.checkIfChanged();
     if (this.isChanged) {
+      const user = {
+        userid: this.sessionManagerService.getId(),
+        first_name: this.first_name.value,
+        last_name: this.last_name.value,
+        email: this.email.value,
+        phone_number: this.phone_number.value,
+        country_id: this.country_id.value
+      };
       this.userDataService.setUserData(user).subscribe(data => {
         this.isSuccessful = data.success;
         if (this.isSuccessful) {

@@ -25,6 +25,7 @@ class HistoryLog {
 export class HistoryComponent implements OnInit {
 
   historyArray: HistoryLog[] = new Array();
+
   constructor(private historyService: HistoryService,
               private redirectManagerService: RedirectManagerService,
               private sessionManagerService: SessionManagerService) { }

@@ -41,6 +41,7 @@ import { Router } from '@angular/router';
 export class PageContentComponent implements OnInit {
 
   isLogged: boolean;
+
   constructor(private sessionManagerService: SessionManagerService,
               private sessionDataCheckService: SessionDataCheckService,
               private router: Router) {
@@ -48,7 +49,6 @@ export class PageContentComponent implements OnInit {
       this.getIsLogged();
     });
   }
-
 
   ngOnInit(): void {
     this.sessionDataCheckService.checkData();

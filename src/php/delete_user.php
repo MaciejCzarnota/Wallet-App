@@ -26,7 +26,6 @@ if(isset($postdata) && !empty($postdata)) {
             $myObj['success'] = false;
         }
     }else {
-        
         $myObj['success'] = false;
     }
     $myJSON = json_encode($myObj);

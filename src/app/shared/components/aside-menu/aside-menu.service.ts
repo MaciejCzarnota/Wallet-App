@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AsideMenuService {
 
-  backEndService = 'http://localhost/WalletApp/src/php/';
+  backEndService = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getUsernameFromServer(userid: number): Observable<any> {
-    return this.http.post<any>(this.backEndService + 'get_username.php', {userid}, {responseType: 'json'}).pipe(
-      // TODO - obsługa błędu (catchError)
-    );
+    return this.http.post<any>(this.backEndService + 'get_username.php', {userid}, {responseType: 'json'});
   }
 }

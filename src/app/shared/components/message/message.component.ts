@@ -4,7 +4,6 @@ class Message {
   title: string;
   content: string;
   success: boolean;
-  display: boolean;
 }
 @Component({
   selector: 'app-message',

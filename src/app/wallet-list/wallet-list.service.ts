@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 
 import { DatabaseLoggerService } from '../shared/services/database-logger.service';
 import { SessionMessageManagerService } from '../shared/services/session-message-manager.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WalletListService {
 
-  backEndService = 'http://localhost/WalletApp/src/php/';
+  backEndService = environment.apiUrl;
 
   constructor(private http: HttpClient,
               private databaseLoggerService: DatabaseLoggerService,

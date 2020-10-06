@@ -1,16 +1,17 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AsideMenuService } from './aside-menu.service';
 import { SessionManagerService } from '../../services/session-manager.service';
 import { SessionMessageManagerService } from '../../services/session-message-manager.service';
 
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-aside-menu',
   templateUrl: './aside-menu.component.html',
   styleUrls: ['./aside-menu.component.css']
 })
-export class AsideMenuComponent implements OnChanges {
+
+export class AsideMenuComponent {
 
   isLogged: boolean;
   username: string;
@@ -26,10 +27,6 @@ export class AsideMenuComponent implements OnChanges {
 
   getIsLogged(): void {
     this.isLogged = this.sessionManagerService.getLoggedIn();
-  }
-
-  ngOnChanges(): void {
-    this.getIsLogged();
   }
 
   getUsername(): void {

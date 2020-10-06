@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CountriesService {
 
-  backEndService = 'http://localhost/WalletApp/src/php/';
+  backEndService = environment.apiUrl;
+
   constructor(private http: HttpClient) { }
 
-  getObs(): Observable<any> {
+  getCountries(): Observable<any> {
     return this.http.get(this.backEndService + 'get_countries.php');
   }
 }

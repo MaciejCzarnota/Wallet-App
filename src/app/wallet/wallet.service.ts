@@ -7,13 +7,14 @@ import { SessionManagerService } from '../shared/services/session-manager.servic
 import { DatabaseLoggerService } from '../shared/services/database-logger.service';
 import { SessionMessageManagerService } from '../shared/services/session-message-manager.service';
 import { Currency } from './classess/currency';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WalletService {
 
-  backEndService = 'http://localhost/WalletApp/src/php/';
+  backEndService = environment.apiUrl;
 
   // Methods performed on initialization of wallet component
   constructor(private http: HttpClient, private router: Router,
